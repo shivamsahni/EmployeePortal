@@ -20,7 +20,9 @@ const jwt = require('express-jwt');
 const app = express();
 
 // connect database
-db.connectToDatabase(process.env.DB_URL);
+const dev_db_url = 'mongodb+srv://test_user:12abcdef12@cluster0.bsl5z.mongodb.net/EmployeePortal?retryWrites=true&w=majority';
+const mongoDB = process.env.DB_URL || dev_db_url;
+db.connectToDatabase(mongoDB);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views/pages'));
