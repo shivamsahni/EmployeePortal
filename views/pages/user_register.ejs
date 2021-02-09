@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= locals.title %></title>
+   <% include ../partials/loginsignupStylesheet %>
+   
+</head> 
+<body>
+    <% include ../partials/header_alluser %>
+    <div class="text-center">
+        <form class="form-signin" method="POST" action="/auth/register" enctype="multipart/form-data" >
+        
+            <% if (locals.error) { %>
+                <p class="text-danger">
+                    <% locals.error.forEach(val=>{ %>
+                        <%= val %>
+                    <%  }) %>
+                </p>
+            <% } %>
+
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+            <label for="username" class="sr-only"> Username</label>
+            <input type="text" name="username" id="username" class="form-control" placeholder="Username..." autofocus value= <%= undefined === locals.user ? '' : locals.user.username %> >
+
+            <label for="inputpassword" class="sr-only"> Password</label>
+            <input type="password" name="password" id="inputpassword" class="form-control" placeholder="Password" required value= <%= undefined === locals.user ? '' : locals.user.password %>  >
+
+            <label for="confirmpassword" class="sr-only">Confirm Password</label>
+            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Confirm Password" required value= <%= undefined === locals.user ? '' : locals.user.confirmpassword %> >
+               
+            <lable for="avatar" class="sr-only">Profile Picture</lable>
+            <input type="file" accept="image/*" name="avatar" class="form-control" placeholder="Profile Picture..." >
+
+            <lable for="isManager" class="sr-only"> Manager</lable>
+            <input type="checkbox" id="isManager" name="isManager" value = true %> >
+            <label for="isManager"> Manager</label>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" > Register</button>
+        </form>
+
+    </div>
+
+    <% include ../partials/javascript %>
+ </body>
+ </html>
