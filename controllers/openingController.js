@@ -1,7 +1,7 @@
 const Opening = require('../models/opening');
 const User = require('../models/user');
 const {body, validationResult} = require('express-validator');
-const { reset } = require('nodemon');
+
 var async = require('async');
 
 exports.opening_list = function(req, res, next){
